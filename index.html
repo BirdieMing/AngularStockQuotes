@@ -1,0 +1,63 @@
+<html lang = "en">
+   <head>
+      <link rel = "stylesheet"
+         href = "https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+      <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+      <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+      <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+      <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+      <script src = "https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script type="text/javascript" src="./app.js"></script>
+      <style>
+
+    </style>
+   </head>
+
+   <body ng-app = "myApp" ng-controller = "myCtrl">
+      <div class="container">
+        <h1>Ticker:</h1>
+        <input type="text" ng-model="ticker" placeholder="MSFS, AAPL">
+        <button type="button" ng-click="addTicker(ticker)" class="btn btn-success">Add to Watchlist</button>
+      </div>
+      <div class="container">
+        <h1>Watchlist:</h1>
+        <table class="table">
+          <thead>
+          <tr>
+            <td>Ticker</td>
+          </tr>
+          <thead/>
+          <tbody>
+          <tr ng-repeat="item in tickers track by $index">
+               <td>{{item}}</td>
+               <td>
+                   <button type="button" ng-click="removeTicker(item)">Remove</button>
+               </td>
+          </tr>
+          <tbody/>
+          </table>
+        </div>
+        <div class="container">
+          <h1>Quotes:</h1>
+          <button type="button" ng-click="getQuotes()" class="btn btn-success">Get Quotes</button>
+        </div>
+        <div class="container">
+          <table class="table">
+            <thead>
+            <tr>
+              <td>Ticker</td>
+              <td>Delayed Quote</td>
+            </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="quote in parsedQuotes">
+                <td>{{quote.ticker}}</td>
+                <td>{{quote.delayedQuote}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+   </body>
+</html>
